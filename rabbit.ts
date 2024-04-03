@@ -41,7 +41,7 @@ await fetch(`${admin_host}/api/exchanges/${vhost}/dd-exchange`, {
     method: "PUT",
     headers: headers,
     body: JSON.stringify({
-        "type": "direct",
+        "type": "fanout",
         "auto_delete": false,
         "durable": true,
         "internal": false,
@@ -108,7 +108,7 @@ await fetch(`${admin_host}/api/bindings/${vhost}/e/dd-exchange-00/e/dd-exchange`
 
 // STEP 4: Create the base queue and binding
 
-await fetch(`${admin_host}/api/queues/dd-queue`, {
+await fetch(`${admin_host}/api/queues/${vhost}/dd-queue`, {
     method: "PUT",
     headers: headers,
     body: JSON.stringify({
